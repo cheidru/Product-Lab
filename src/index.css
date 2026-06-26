@@ -1,7 +1,0 @@
-* { box-sizing: border-box; }
-html, body { margin: 0; }
-body { font-family: 'Onest', sans-serif; color: #1c1118; background: #fff; }
-a { transition: opacity 0.15s; }
-a:hover { opacity: 0.8; }
-input::placeholder, textarea::placeholder { color: #b3a79c; }
-input:focus, textarea:focus { outline: none; border-color: #FF6A3D !important; }
