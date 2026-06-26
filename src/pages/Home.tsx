@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import CtaBanner from '../components/CtaBanner'
+//import CtaBanner from '../components/CtaBanner'
 
 const capabilities = [
   { n: '01', title: 'Консультации по продукту', desc: 'Оценим реализуемость идеи, стоимость проектирования и производства.' },
