@@ -1,16 +1,19 @@
 import { Link } from 'react-router-dom'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 export default function Footer() {
+  const m = useIsMobile()
+
   return (
-    <footer style={{ padding: '48px 48px', background: '#1c1118', color: '#cbbcc4' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', display: 'flex', justifyContent: 'space-between', gap: 40, flexWrap: 'wrap' }}>
+    <footer style={{ padding: m ? '36px 20px' : '48px 48px', background: '#1c1118', color: '#cbbcc4' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', display: 'flex', justifyContent: 'space-between', gap: m ? 32 : 40, flexWrap: 'wrap', flexDirection: m ? 'column' : 'row' }}>
         <div style={{ maxWidth: 320 }}>
           <span style={{ fontWeight: 800, fontSize: 20, color: '#fff' }}>
             ЛАБ<span style={{ color: '#FF6A3D' }}>.</span>
           </span>
           <p style={{ fontSize: 14, margin: '14px 0 0' }}>Инженерный дизайн и улучшение продуктов с 2014 года.</p>
         </div>
-        <div style={{ display: 'flex', gap: 64, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: m ? 40 : 64, flexWrap: 'wrap' }}>
           <div>
             <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', color: '#7a6a73', marginBottom: 14 }}>Меню</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>

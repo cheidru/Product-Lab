@@ -1,4 +1,5 @@
 import CtaBanner from '../components/CtaBanner'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 const cards = [
   { label: 'Почта', value: 'hello@lab.studio', sub: 'Для проектов, вопросов и предложений.' },
@@ -8,31 +9,33 @@ const cards = [
 ]
 
 export default function Contacts() {
+  const m = useIsMobile()
+
   return (
     <div>
       {/* Hero */}
       <section style={{ background: '#271826', color: '#fff' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '72px 48px 80px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 26 }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: m ? '52px 20px 60px' : '72px 48px 80px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: m ? 20 : 26 }}>
             <span style={{ height: 1, width: 46, background: '#FF6A3D', display: 'block' }} />
             <span style={{ fontSize: 14, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#FF6A3D' }}>Контакты</span>
           </div>
-          <h1 style={{ fontSize: 72, lineHeight: 1.0, fontWeight: 800, letterSpacing: '-0.03em', margin: '0 0 24px', maxWidth: 880 }}>
+          <h1 style={{ fontSize: m ? 34 : 72, lineHeight: 1.05, fontWeight: 800, letterSpacing: '-0.03em', margin: m ? '0 0 16px' : '0 0 24px', maxWidth: 880 }}>
             Давайте обсудим ваш продукт
           </h1>
-          <p style={{ fontSize: 21, lineHeight: 1.5, color: '#cbbcc4', maxWidth: 600, margin: 0 }}>
+          <p style={{ fontSize: m ? 17 : 21, lineHeight: 1.5, color: '#cbbcc4', maxWidth: 600, margin: 0 }}>
             Напишите, позвоните или приходите в студию — ответим в течение рабочего дня.
           </p>
         </div>
       </section>
 
       {/* Cards */}
-      <section style={{ maxWidth: 1280, margin: '0 auto', padding: '64px 48px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 24 }}>
+      <section style={{ maxWidth: 1280, margin: '0 auto', padding: m ? '40px 20px' : '64px 48px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: m ? '1fr' : 'repeat(2,1fr)', gap: m ? 14 : 24 }}>
           {cards.map(c => (
-            <div key={c.label} style={{ border: '1px solid #ece4dc', borderRadius: 14, padding: 34 }}>
-              <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#9b8f86', marginBottom: 12 }}>{c.label}</div>
-              <div style={{ fontSize: 26, fontWeight: 700 }}>{c.value}</div>
+            <div key={c.label} style={{ border: '1px solid #ece4dc', borderRadius: 14, padding: m ? 24 : 34 }}>
+              <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#9b8f86', marginBottom: 10 }}>{c.label}</div>
+              <div style={{ fontSize: m ? 22 : 26, fontWeight: 700 }}>{c.value}</div>
               <p style={{ fontSize: 15, color: '#6B5E63', margin: '10px 0 0' }}>{c.sub}</p>
             </div>
           ))}
@@ -40,8 +43,8 @@ export default function Contacts() {
       </section>
 
       {/* Map placeholder */}
-      <section style={{ maxWidth: 1280, margin: '0 auto', padding: '0 48px 72px' }}>
-        <div style={{ borderRadius: 14, overflow: 'hidden', height: 360, background: 'repeating-linear-gradient(135deg,#f1ece5,#f1ece5 12px,#f8f4ee 12px,#f8f4ee 24px)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'monospace', fontSize: 13, color: '#bcb0a6' }}>
+      <section style={{ maxWidth: 1280, margin: '0 auto', padding: m ? '0 20px 52px' : '0 48px 72px' }}>
+        <div style={{ borderRadius: 14, overflow: 'hidden', height: m ? 240 : 360, background: 'repeating-linear-gradient(135deg,#f1ece5,#f1ece5 12px,#f8f4ee 12px,#f8f4ee 24px)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'monospace', fontSize: 13, color: '#bcb0a6' }}>
           карта · схема проезда
         </div>
       </section>
