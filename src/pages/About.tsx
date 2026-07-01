@@ -1,5 +1,8 @@
+import { useRef } from 'react'
 import CtaBanner from '../components/CtaBanner'
 import { useIsMobile } from '../hooks/useIsMobile'
+
+const VIDEO_LOOP_DELAY_MS = 2000
 
 const values = [
   { n: '01', title: 'Инженерная строгость', desc: 'Каждое решение проверяем на реализуемость и надёжность ещё до запуска.' },
@@ -35,6 +38,11 @@ const stats = [
 
 export default function About() {
   const m = useIsMobile()
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  const handleVideoEnded = () => {
+    setTimeout(() => videoRef.current?.play(), VIDEO_LOOP_DELAY_MS)
+  }
 
   return (
     <div>
@@ -66,8 +74,16 @@ export default function About() {
               Небольшая команда инженеров и дизайнеров, которая берётся за сложное и доводит до конца. Каждый проект ведём как собственный продукт.
             </p>
           </div>
-          <div style={{ background: 'repeating-linear-gradient(135deg,#f1ece5,#f1ece5 10px,#f8f4ee 10px,#f8f4ee 20px)', borderRadius: 10, minHeight: m ? 200 : 300, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'monospace', fontSize: 12, color: '#bcb0a6' }}>
-            фото команды / студии
+          <div style={{ borderRadius: 10, overflow: 'hidden', minHeight: m ? 200 : 300 }}>
+            <video
+              ref={videoRef}
+              className="about-team-video"
+              src={`${import.meta.env.BASE_URL}videos/about-team.mp4`}
+              autoPlay
+              muted
+              playsInline
+              onEnded={handleVideoEnded}
+            />
           </div>
         </div>
       </section>
